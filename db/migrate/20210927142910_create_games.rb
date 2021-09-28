@@ -2,7 +2,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
   def change
     create_table :games do |t|
       t.string :image
-      t.date_time :date
+      t.datetime :date
 
       t.timestamps
     end
