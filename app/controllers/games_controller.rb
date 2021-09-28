@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
     wrap_parameters format: []
 
-    rescue_from ActiveRecord: :RecordNotFound, with: :render_not_found_response
-    rescue_from ActiveRecord: :RecordInvalid, with: :render_unprocessable_entity_response
+    # rescue_from ActiveRecord: :RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord: :RecordInvalid, with: :render_unprocessable_entity_response
 
     def index
         games = Game.all
@@ -15,15 +15,10 @@ class GamesController < ApplicationController
     end
 
     def create
-        game = Game.create!(game_params)
+        game = Game.create(game_params)
         render json: game, status: :created
     end
 
-    def update
-        game = find_game
-        game.update!(game_params)
-        render json: gamecard, status: :accepted
-    end
 
     def destroy
         game = find_game
@@ -35,12 +30,12 @@ class GamesController < ApplicationController
 
     private
 
-    def find_gamecard
-        Gamecard.find(params[:id])
+    def find_game
+        Game.find(params[:id])
     end
 
-    def gamecard_params
-        params.permit(:name, :image, :date)
+    def game_params
+        params.permit(:title, :image)
     end
 
     def render_unprocessable_entity_response(invalid)

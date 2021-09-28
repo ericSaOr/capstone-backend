@@ -1,11 +1,12 @@
 class GamecardsController < ApplicationController
     wrap_parameters format: []
 
-    rescue_from ActiveRecord: :RecordNotFound, with: :render_not_found_response
-    rescue_from ActiveRecord: :RecordInvalid, with: :render_unprocessable_entity_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    
 
     def index
-        gamecards = Gamecards.all
+        gamecards = Gamecard.all
         render json: gamecards, status: :ok 
     end
 
@@ -15,13 +16,13 @@ class GamecardsController < ApplicationController
     end
 
     def create
-        gamecard = Gamecard.create!(gamecard_params)
+        gamecard = Gamecard.create(gamecard_params)
         render json: gamecard, status: :created
     end
 
     def update
         gamecard = find_gamecard
-        gamecard.update!(gamecard_params)
+        gamecard.update(gamecard_params)
         render json: gamecard, status: :accepted
     end
 
@@ -31,14 +32,14 @@ class GamecardsController < ApplicationController
         head :no_content
     end
 
-    def increment_credpoints
-        gamecard = Gamecard.find_by(id: params[:id])
-        if gamecard
-            gamecard.update(cred_points: User.cred_points +1)
-        else
-            render json: {error: "GameCard not found"}, status: :not_found
-        end
-    end
+    # def increment_credpoints
+    #     gamecard = Gamecard.find_by(id: params[:id])
+    #     if gamecard
+    #         gamecard.update(cred_points: User.cred_points +1)
+    #     else
+    #         render json: {error: "GameCard not found"}, status: :not_found
+    #     end
+    # end
 
     private
 

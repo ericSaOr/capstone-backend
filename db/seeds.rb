@@ -38,6 +38,13 @@ Game.create!([
   },
   {
     date: Date.current.to_datetime,
+    title: 'Final Fantasy XII',
+    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/27/Final_Fantasy_XII_Box_Art.png/220px-Final_Fantasy_XII_Box_Art.png',
+
+  },
+
+  {
+    date: Date.current.to_datetime,
     title: 'Final Fantasy X',
     image: 'https://www.mobygames.com/images/covers/l/558569-final-fantasy-x-playstation-2-front-cover.jpg'
   }])
@@ -54,7 +61,7 @@ user5 = User.create(user_name: 'Tidus10', password: 'brotherhood01', cred_points
 
 puts "✅ Done seeding!"
 
-puts "Seeding reviews..."
+puts "Seeding Gamecards..."
 
 
 
@@ -64,7 +71,7 @@ puts "Seeding reviews..."
         image: "https://static.wikia.nocookie.net/finalfantasy/images/2/29/FFVI_Soul_Shrine_Exterior.png/revision/latest/scale-to-width-down/240?cb=20140501204515",
         note: "This dungeons mini-boss is tough. Stock up on heals.",
         user_id: User.all.sample.id,
-        game_id: Game.all.sample.id)
+        game_id: Game.find("Final Fantasy VI"))
     
 
     gamecard = Gamecard.create(
@@ -73,7 +80,7 @@ puts "Seeding reviews..."
       image: "https://lparchive.org/Final-Fantasy-X-(by-The-Dark-Id)/Update%2063/3-manfucklightning2.jpg",
       note: "I dodged lightning 150 times and all I got was a Mega-Elixir.",
       user_id: User.all.sample.id,
-      game_id: Game.all.sample.id)
+      game_id: Game.find("Final Fantasy X"))
 
     gamecard = Gamecard.create(
       
@@ -81,7 +88,7 @@ puts "Seeding reviews..."
       image: "https://static.wikia.nocookie.net/finalfantasy/images/2/29/FFVI_Soul_Shrine_Exterior.png/revision/latest/scale-to-width-down/240?cb=20140501204515",
       note: "This dungeons mini-boss is tough. Stock up on heals.",
       user_id: User.all.sample.id,
-      game_id: Game.all.sample.id)
+      game_id: Game.find("Final Fantasy XII"))
 
     
 puts "✅ Done seeding!"
