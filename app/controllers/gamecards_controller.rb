@@ -6,8 +6,12 @@ class GamecardsController < ApplicationController
     
 
     def index
-        gamecards = Gamecard.all
-        render json: gamecards, status: :ok 
+        if current_user == nil
+            render json: []
+        else
+            gamecard = current_user.gamecards
+            render json: gamecards
+        end
     end
 
     def show
@@ -16,7 +20,8 @@ class GamecardsController < ApplicationController
     end
 
     def create
-        gamecard = Gamecard.create(gamecard_params)
+        gamecard = Gamecard.new(gamecard_params)
+        gamecard.save
         render json: gamecard, status: :created
     end
 
@@ -49,7 +54,7 @@ class GamecardsController < ApplicationController
     end
 
     def gamecard_params
-        params.permit(:name, :image,  :level_data, :note)
+        params.permit(:user_id, :game_id, :image, :level_data, :note)
     end
 
     def render_unprocessable_entity_response(invalid)

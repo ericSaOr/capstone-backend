@@ -18,7 +18,7 @@ class GamesController < ApplicationController
         game = Game.create(game_params)
         render json: game, status: :created
     end
-
+    
 
     def destroy
         game = find_game
