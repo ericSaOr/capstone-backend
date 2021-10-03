@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :games, only: [:index, :show, :create, :destroy]
+  resources :games
   resources :gamecards
   resources :users, only: [ :index, :show, :create]
-  get "/games", to: "games:index"
+  get "/games", to: "games#index"
   post "/login", to: "sessions#create"
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"

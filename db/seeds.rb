@@ -102,5 +102,13 @@ puts "Seeding Gamecards..."
         user_id: User.all.sample.id,
         game_id: Game.all.sample.id)
 
+      gamecard = Gamecard.create(
+        level_data: "Another level",
+        image: "https://www.mobygames.com/images/covers/l/263427-mario-kart-7-nintendo-3ds-front-cover.jpg",
+        note: "Super cool game!",
+        user_id: User.all.sample.id,
+        game_id: Game.all.sample.id
+      )
+
     
 puts "✅ Done seeding!"

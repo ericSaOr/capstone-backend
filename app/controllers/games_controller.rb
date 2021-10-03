@@ -16,9 +16,10 @@ class GamesController < ApplicationController
 
     def create
         game = Game.create(game_params)
+        current_user.games
         render json: game, status: :created
     end
-    
+
 
     def destroy
         game = find_game
@@ -35,7 +36,7 @@ class GamesController < ApplicationController
     end
 
     def game_params
-        params.permit(:title, :image)
+        params.permit(:title, :image, :id)
     end
 
     def render_unprocessable_entity_response(invalid)
