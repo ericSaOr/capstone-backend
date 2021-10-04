@@ -6,12 +6,14 @@ class GamecardsController < ApplicationController
     
 
     def index
-        if current_user == nil
-            render json: []
-        else
-            gamecard = current_user.gamecards
-            render json: gamecards
-        end
+        # if @current_user == nil
+        #     render json: []
+        # else
+        #     gamecard = @current_user.gamecards
+        #     render json: gamecards
+        # end
+        gamecards = Gamecard.all
+        render json: gamecards, status: :ok
     end
 
     def show

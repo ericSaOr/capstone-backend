@@ -16,7 +16,7 @@ class GamesController < ApplicationController
 
     def create
         game = Game.create(game_params)
-        current_user.games
+        # @current_user.games
         render json: game, status: :created
     end
 

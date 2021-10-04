@@ -9,14 +9,18 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by(id: session[:user_id])
-        if user
-            render json: user
-        else
+       
+        # user = User.find_by(id: session[:user_id])
+        user = User.find_by(:id)
+       
+        # if user
+            render json: user, include: :gamecards 
+        # else
         
-        render json: {error: 'Not authorized'}, status: :unauthorized
+        # render json: {error: 'Not authorized'}, status: :unauthorized
         
-        end
+        
+      
         
     end
 
