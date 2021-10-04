@@ -19,12 +19,11 @@ class GamesController < ApplicationController
         # @current_user.games
         render json: game, status: :created
     end
-
+    
 
     def destroy
         game = find_game
-        game.destroy
-        head :no_content
+        render json: game.destroy
     end
 
     

@@ -22,8 +22,7 @@ class GamecardsController < ApplicationController
     end
 
     def create
-        gamecard = Gamecard.new(gamecard_params)
-        gamecard.save
+        gamecard = Gamecard.create!(gamecard_params)
         render json: gamecard, status: :created
     end
 
@@ -35,14 +34,14 @@ class GamecardsController < ApplicationController
 
     def destroy
         gamecard = find_gamecard
-        gamecard.destroy
+        render json: gamecard.destroy
         head :no_content
     end
 
     # def increment_credpoints
     #     gamecard = Gamecard.find_by(id: params[:id])
     #     if gamecard
-    #         gamecard.update(cred_points: User.cred_points +1)
+    #         User.update(cred_points: User.cred_points +1)
     #     else
     #         render json: {error: "GameCard not found"}, status: :not_found
     #     end

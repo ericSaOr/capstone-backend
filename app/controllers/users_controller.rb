@@ -35,6 +35,12 @@ class UsersController < ApplicationController
         head :no_content
     end
 
+    def increment_credpoints
+        cred_points = User.update(cred_points: User.cred_points + 1)
+        render json: cred_points
+
+    end
+
 
     private
 
