@@ -8,7 +8,13 @@
 
 
 
+puts "🏕️ Seeding users..."
 
+user1 = User.create(user_name: 'Tanooki4', password: 'Nookman6')
+user2 = User.create(user_name: 'Paper17', password: 'Sama77')
+user3 = User.create(user_name: 'Bleux8', password: 'MMist007')
+
+puts "✅ Done seeding!"
 
 
 
